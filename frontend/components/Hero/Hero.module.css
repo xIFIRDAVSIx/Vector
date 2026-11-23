@@ -1,0 +1,520 @@
+/* ========================================
+   01. HERO SECTION
+======================================== */
+
+.hero {
+  position: relative;
+  min-height: calc(100svh - 90px);
+
+  display: flex;
+  align-items: center;
+
+  overflow: visible;
+}
+
+/* ========================================
+   02. HERO LAYOUT
+======================================== */
+
+.heroLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: 50px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+/* ========================================
+   03. HERO CONTENT
+======================================== */
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+/* ========================================
+   04. ROBOTICS LABEL
+======================================== */
+
+.heroLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: 0 0 2px 8px;
+  padding: 0;
+
+  color: #aaa;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.labelLines {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  flex-shrink: 0;
+  width: fit-content;
+  height: 17px;
+  margin-left: 10px;
+}
+
+.labelLines i {
+  display: block;
+  flex-shrink: 0;
+
+  width: 6px;
+  height: 15px;
+
+  border: 1.5px solid #ff6908;
+  transform: skewX(-35deg);
+}
+
+.labelLines i:nth-child(-n + 3) {
+  background: #ff6908;
+}
+
+.labelLines i:nth-child(n + 4) {
+  background: transparent;
+}
+
+.labelText {
+  display: inline-block;
+}
+
+/* ========================================
+   05. INTERACTIVE LOGO + SLOGAN
+   Only this block reacts to mouse hover.
+======================================== */
+
+.heroTextInteractive {
+  --text-rx: 0deg;
+  --text-ry: 0deg;
+  --text-tx: 0px;
+  --text-ty: 0px;
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: fit-content;
+  max-width: max-content;
+  align-self: flex-start;
+
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  transform:
+    perspective(1000px)
+    rotateX(var(--text-rx))
+    rotateY(var(--text-ry))
+    translate3d(var(--text-tx), var(--text-ty), 0);
+
+  transition: transform 220ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.heroTextInteractive:hover {
+  cursor: default;
+}
+
+/* ========================================
+   06. VECTOR MAIN TITLE
+======================================== */
+
+.vectorTitle {
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+  max-width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: "Oxanium", sans-serif;
+  font-size: clamp(48px, 10.5vw, 150px);
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+
+  white-space: nowrap;
+  overflow: visible;
+
+  transform: translateZ(24px) skewX(-20deg);
+  transform-origin: left center;
+}
+
+.vectorTitle span {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   07. ORANGE V
+======================================== */
+
+.vectorV {
+  background: linear-gradient(
+    180deg,
+    #ffd08a 0%,
+    #ffad32 20%,
+    #ff850d 55%,
+    #ed5405 80%,
+    #b92b04 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* filter:
+    drop-shadow(1.5px 0 0 #050302)
+    drop-shadow(-1.5px 0 0 #050302)
+    drop-shadow(0 1.5px 0 #050302)
+    drop-shadow(0 -1.5px 0 #050302)
+    drop-shadow(0 0 5px rgba(255, 105, 8, 0.4))
+    drop-shadow(0 5px 6px rgba(0, 0, 0, 0.6)); */
+}
+
+/* ========================================
+   08. SILVER METALLIC ECTOR
+======================================== */
+
+.vectorRest {
+  background: linear-gradient(
+    180deg,
+    #fff 0%,
+    #eee 20%,
+    #c6c6c6 42%,
+    #fff 55%,
+    #aaa 78%,
+    #e8e8e8 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* filter:
+    drop-shadow(1.5px 0 0 #050302)
+    drop-shadow(-1.5px 0 0 #050302)
+    drop-shadow(0 1.5px 0 #050302)
+    drop-shadow(0 -1.5px 0 #050302)
+    drop-shadow(0 2px 3px rgba(255, 105, 8, 0.25))
+    drop-shadow(0 5px 6px rgba(0, 0, 0, 0.6)); */
+}
+
+/* ========================================
+   09. ENGINEERING THE FUTURE
+======================================== */
+
+.subtitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+
+  width: fit-content;
+  max-width: 100%;
+  margin: 3px 0 0 10px;
+  padding: 0;
+
+  color: #f2f2f2;
+  font-family: "Oxanium", sans-serif;
+  font-size: clamp(21px, 2.8vw, 40px);
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+
+  text-shadow:
+    -2px 0 #050302, 2px 0 #050302, 0 -2px #050302, 0 2px #050302,
+    -1.5px -1.5px #050302, 1.5px 1.5px #050302, 1.5px -1.5px #050302, -1.5px 1.5px #050302,
+    0 4px 6px rgba(0, 0, 0, 0.6);
+
+  transform: translateZ(12px) skewX(-9deg);
+  transform-origin: left center;
+}
+
+.subtitleOrange {
+  color: #ff6908;
+  /* text-shadow:
+    -2px 0 #050302, 2px 0 #050302, 0 -2px #050302, 0 2px #050302,
+    -1.5px -1.5px #050302, 1.5px 1.5px #050302, 1.5px -1.5px #050302, -1.5px 1.5px #050302,
+    0 0 10px rgba(255, 105, 8, 0.4); */
+}
+
+/* ========================================
+   10. DESCRIPTION — STATIC
+======================================== */
+
+.subtitleDis {
+  max-width: 600px;
+  margin: 15px 0 0 8px;
+
+  color: #c5c0bd;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   11. HERO BUTTONS — STATIC
+======================================== */
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 22px;
+
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.primaryButton {
+  background: var(--orange);
+  color: #fff;
+}
+
+.secondaryButton {
+  border: 1px solid var(--orange);
+  color: var(--orange);
+}
+
+.primaryButton:hover {
+  background: var(--gold);
+  transform: translateY(-3px);
+}
+
+.secondaryButton:hover {
+  background: var(--orange);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* ========================================
+   12. RIGHT PHOTO PLACEHOLDER — STATIC
+======================================== */
+
+.heroFrameStage {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  min-width: 0;
+  margin-left: auto;
+}
+
+/* ========================================
+   13. TABLET RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 80svh;
+  }
+
+  .heroLayout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    gap: 30px;
+  }
+
+  .heroLabel {
+    margin-left: -3px;
+  }
+
+  .vectorTitle {
+    font-size: clamp(55px, 10vw, 100px);
+  }
+
+  .subtitle {
+    font-size: clamp(20px, 3vw, 30px);
+  }
+
+  .subtitleDis {
+    max-width: 520px;
+    font-size: 17px;
+  }
+}
+
+/* ========================================
+   14. MOBILE LAYOUT
+======================================== */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 75svh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .heroLayout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .heroFrameStage {
+    margin-inline: auto;
+  }
+}
+
+/* ========================================
+   15. SMALL MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  .heroLabel {
+    gap: 9px;
+    margin-bottom: 3px;
+    margin-left: -3px;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .labelLines {
+    gap: 4px;
+    height: 13px;
+  }
+
+  .labelLines i {
+    width: 5px;
+    height: 12px;
+  }
+
+  .vectorTitle {
+    font-size: clamp(40px, 12vw, 72px);
+    letter-spacing: -0.04em;
+    padding: 0 5px 3px;
+  }
+
+  .subtitle {
+    gap: 7px;
+    margin-top: 4px;
+    font-size: clamp(17px, 4.5vw, 25px);
+    transform: translateZ(12px) skewX(-6deg);
+  }
+
+  .subtitleDis {
+    max-width: 100%;
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .heroButtons {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 48px;
+    padding: 0 18px;
+    font-size: 13px;
+  }
+
+  .heroTextInteractive {
+    transition-duration: 220ms;
+  }
+}
+
+/* ========================================
+   16. VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 450px) {
+  .hero {
+    min-height: 70svh;
+  }
+
+  .heroLabel {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+  }
+
+  .vectorTitle {
+    font-size: clamp(38px, 11.5vw, 52px);
+    letter-spacing: -0.035em;
+  }
+
+  .subtitle {
+    font-size: clamp(16px, 4.5vw, 21px);
+    margin-left: 6px;
+  }
+
+  .subtitleDis {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .heroLabel {
+    gap: 7px;
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .vectorTitle {
+    font-size: 11vw;
+    letter-spacing: -0.025em;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    gap: 5px;
+  }
+
+  .heroButtons {
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    padding: 0 14px;
+    font-size: 12px;
+  }
+}
+
+/* ========================================
+   17. ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep pointer-controlled 3D movement, but remove interpolation. */
+  .heroTextInteractive {
+    transition: none !important;
+  }
+}
+

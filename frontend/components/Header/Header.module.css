@@ -1,0 +1,259 @@
+
+/* =========================
+   01. HEADER
+========================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  width: 100%;
+  /* padding: 3px 0; */
+
+  background: rgba(8, 6, 5, 0.3);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 120, 20, 0.1);
+
+  transition: padding 0.4s ease;
+}
+
+/* =========================
+   02. SCROLLED STATE
+========================= */
+
+/* .scrolled {
+  padding: 3px 0;
+} */
+
+/* =========================
+   03. NAVIGATION
+========================= */
+
+.nav {
+  min-height: 65px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+  gap: 25px;
+}
+
+/* =========================
+   04. LOGO
+========================= */
+
+.logo {
+  display: block;
+  justify-self: start;
+}
+
+.logo img {
+  display: block;
+
+  width: 125px;
+  height: 50px;
+
+  object-fit: contain;
+
+  transition:
+    width 0.4s ease,
+    height 0.4s ease;
+}
+
+.scrolled .logo img {
+  width: 125px;
+  height: 50px;
+}
+
+/* =========================
+   05. NAV LINKS
+========================= */
+
+.navlinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+}
+
+.navlinks a {
+  position: relative;
+
+  padding: 8px 0;
+
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.navlinks a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+
+  width: 0;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    var(--orange),
+    var(--gold)
+  );
+
+  box-shadow: 0 0 10px rgba(255, 105, 8, 0.5);
+
+  transition: width 0.35s ease;
+}
+
+.navlinks a:hover {
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.navlinks a:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   06. BRAND
+========================= */
+
+.brand {
+  justify-self: end;
+
+  color: var(--white);
+
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: transform 0.3s ease;
+}
+
+.brand:hover {
+  transform: scale(1.04);
+}
+
+.brand span {
+  color: var(--gold);
+}
+
+/* =========================
+   07. SCROLL PROGRESS
+========================= */
+
+.progressTrack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.progress {
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    var(--orange),
+    var(--gold)
+  );
+
+  box-shadow: 0 0 12px rgba(255, 105, 8, 0.5);
+
+  transition: width 0.1s linear;
+}
+
+/* =========================
+   08. TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .navlinks {
+    gap: 20px;
+  }
+
+  .logo img {
+    width: 125px;
+  }
+}
+
+/* =========================
+   09. MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .nav {
+    grid-template-columns: 1fr auto;
+    row-gap: 12px;
+  }
+
+  .navlinks {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    justify-content: center;
+  }
+
+  .brand {
+    justify-self: end;
+    font-size: 13px;
+  }
+
+  .scrolled .logo img {
+    width: 110px;
+    height: 45px;
+  }
+}
+
+/* =========================
+   10. SMALL MOBILE
+========================= */
+
+@media (max-width: 450px) {
+  .navlinks {
+    gap: 18px;
+  }
+
+  .navlinks a {
+    font-size: 13px;
+  }
+
+  .logo img {
+    width: 110px;
+  }
+}
+
+/* =========================
+   11. REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .logo img,
+  .navlinks a,
+  .navlinks a::after,
+  .brand,
+  .progress {
+    transition: none;
+  }
+}

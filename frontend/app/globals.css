@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --gold: #ffb21b;
+  --orange: #ff6908;
+  --red: #a52b08;
+  --ink: #080605;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.site-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+
+  padding-top: 85px;
+}
+
+@media (max-width: 768px) {
+  .site-content {
+    padding-top: 125px;
+  }
+}
+
+/* =========================
+   GLOBAL CONTAINER
+========================= */
+
+.container {
+  width: min(calc(100% - 80px), 1600px);
+  margin-inline: auto;
+}
+
+/* MOBILE CONTAINER */
+
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 40px);
+  }
+}

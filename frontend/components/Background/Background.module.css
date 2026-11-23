@@ -1,0 +1,233 @@
+
+/* ========================================
+   01. FIXED BACKGROUND
+======================================== */
+
+.background {
+  --glow-x: 88%;
+  --glow-y: 35%;
+  --glow-opacity: 0.42;
+
+  --center-opacity: 0.16;
+
+  --dark-start: 55%;
+  --dark-middle: 0.65;
+  --dark-bottom: 0.98;
+
+  --grid-shift: 0px;
+  --grid-opacity: 1;
+
+  --horizon-y: 85.7%;
+  --horizon-opacity: 1;
+  --bottom-glow-opacity: 0.2;
+
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  pointer-events: none;
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    /* Strong progressive darkness */
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.25) 35%,
+      rgba(0, 0, 0, 0.55) 60%,
+      rgba(0, 0, 0, var(--dark-middle)) 85%,
+      rgba(0, 0, 0, var(--dark-bottom)) 100%
+    ),
+
+    /* Moving orange glow */
+    radial-gradient(
+      ellipse at var(--glow-x) var(--glow-y),
+      rgba(255, 91, 8, var(--glow-opacity)) 0%,
+      rgba(157, 52, 9, 0.22) 35%,
+      transparent 72%
+    ),
+
+    /* Center orange atmosphere */
+    radial-gradient(
+      ellipse at 55% 75%,
+      rgba(255, 80, 8, var(--center-opacity)),
+      transparent 55%
+    ),
+
+    /* Main dark gradient */
+    linear-gradient(
+      105deg,
+      #070605 0%,
+      #0c0705 30%,
+      #241006 60%,
+      #552007 100%
+    );
+}
+
+
+/* ========================================
+   02. TECHNOLOGICAL GRID
+======================================== */
+
+.background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: var(--grid-opacity);
+
+  transform: translate3d(0, var(--grid-shift), 0);
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 81px,
+      rgba(255, 145, 64, 0.055) 81px,
+      rgba(255, 145, 64, 0.055) 82px
+    ),
+
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent 81px,
+      rgba(255, 145, 64, 0.045) 81px,
+      rgba(255, 145, 64, 0.045) 82px
+    ),
+
+    linear-gradient(
+      135deg,
+      transparent 49.7%,
+      rgba(255, 105, 8, 0.35) 50%,
+      transparent 50.3%
+    ) 72% 0 / 430px 310px no-repeat,
+
+    linear-gradient(
+      135deg,
+      transparent 49.7%,
+      rgba(255, 105, 8, 0.4) 50%,
+      transparent 50.3%
+    ) right bottom / 470px 390px no-repeat,
+
+    linear-gradient(
+      135deg,
+      transparent 43%,
+      #e95a08 43%,
+      #ff720e 53%,
+      transparent 53%
+    ) right 0 bottom 175px / 220px 175px no-repeat,
+
+    linear-gradient(
+      135deg,
+      transparent 47%,
+      rgba(255, 144, 42, 0.85) 47%,
+      rgba(255, 144, 42, 0.85) 49%,
+      transparent 49%
+    ) right 0 bottom 245px / 220px 175px no-repeat,
+
+    linear-gradient(
+      35deg,
+      transparent 49.7%,
+      rgba(255, 105, 8, 0.35) 50%,
+      transparent 50.3%
+    ) left bottom / 250px 180px no-repeat;
+}
+
+
+/* ========================================
+   03. LIGHT HORIZON
+======================================== */
+
+.background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: var(--horizon-opacity);
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent calc(var(--horizon-y) - 0.25%),
+      rgba(255, 105, 8, 0.2) calc(var(--horizon-y) - 0.15%),
+      #ff8b25 var(--horizon-y),
+      rgba(255, 105, 8, 0.9) calc(var(--horizon-y) + 0.2%),
+      transparent calc(var(--horizon-y) + 0.4%)
+    ),
+
+    linear-gradient(
+      to bottom,
+      transparent 82%,
+      rgba(255, 105, 8, 0.16) 87%,
+      rgba(255, 105, 8, 0.06) 92%,
+      transparent 100%
+    ),
+
+    radial-gradient(
+      ellipse at 50% 86%,
+      rgba(255, 91, 8, var(--bottom-glow-opacity)),
+      transparent 48%
+    );
+
+  filter: drop-shadow(0 0 12px rgba(255, 105, 8, 0.5));
+}
+
+
+/* ========================================
+   04. RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .background {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.12) 0%,
+        rgba(0, 0, 0, 0.25) 35%,
+        rgba(0, 0, 0, 0.55) 60%,
+        rgba(0, 0, 0, var(--dark-middle)) 85%,
+        rgba(0, 0, 0, var(--dark-bottom)) 100%
+      ),
+
+      radial-gradient(
+        ellipse at var(--glow-x) var(--glow-y),
+        rgba(255, 91, 8, var(--glow-opacity)),
+        transparent 72%
+      ),
+
+      linear-gradient(
+        105deg,
+        #070605,
+        #160a05 55%,
+        #3a1707
+      );
+  }
+
+  .background::before {
+    background-size:
+      auto,
+      auto,
+      300px 250px,
+      330px 280px,
+      160px 130px,
+      160px 130px,
+      180px 130px;
+  }
+}
+
+
+/* ========================================
+   05. REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .background::before,
+  .background::after {
+    transition: none;
+  }
+}
